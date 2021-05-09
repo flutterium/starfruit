@@ -21,7 +21,7 @@ extension StarStats on List<num> {
     else {
       var x = this[(length/2).floor()];
       var y = this[(length/2).floor()-1];
-      return mathUtils.mean(x, y);
+      return mathUtils.mean(x as int, y as int);
     }
   }
 
@@ -50,7 +50,7 @@ extension StarStats on List<num> {
 
       if (count > maxCount) {
         maxCount = count;
-        maxValue = this[i];
+        maxValue = this[i] as int;
       }
     }
     return maxValue;
@@ -85,12 +85,12 @@ extension StarStats on List<num> {
   ///Returns the k greatest elements of given set.
   List<num> topElements (num k) {
     sort();
-    return sublist(length-k);
+    return sublist(length-(k as int));
   }
 
   ///Returns the k least elements of given set.
   List<num> bottomElements (num k) {
     sort();
-    return sublist(0,k);
+    return sublist(0,k as int?);
   }
 }

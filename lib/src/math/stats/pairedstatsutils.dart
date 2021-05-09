@@ -28,7 +28,7 @@ extension StarStatsXY on Map<num, num> {
     var avgX = x.mean;
     var avgY = y.mean;
     for (num n = 0; n < x.length; n++) {
-      r += ((x[n] - avgX) * (y[n] - avgY));
+      r += ((x[n as int] - avgX) * (y[n] - avgY));
     }
     r /= ((Sx * Sy)*(x.length-1));
     return r;
@@ -69,7 +69,7 @@ extension StarStatsXY on Map<num, num> {
 
     //calculate r; ignore
     for (num n = 0; n < x.length; n++) {
-      r += ((x[n] - avgX) * (y[n] - avgY));
+      r += ((x[n as int] - avgX) * (y[n] - avgY));
     }
     r /= ((Sx * Sy)*(x.length-1));
     //end r calculation
@@ -93,12 +93,12 @@ extension StarStatsXY on Map<num, num> {
       xx.add(numb.toDouble());
     }
     var xcol1 = List<double>.filled(xx.length, 1.0);
-    var xcol3 = List<double>(xx.length);
+    var xcol3 = List<double?>(xx.length);
     for (var i = 0; i <xx.length; i++) {
-      xcol3[i] = pow(xx[i],2);
+      xcol3[i] = pow(xx[i],2) as double?;
     }
     var Y = Matrix([yy]).transpose();
-    var X = Matrix([xcol1, xx, xcol3]).transpose();
+    var X = Matrix([xcol1, xx, xcol3 as List<double>]).transpose();
     var B = (X.transpose() * X).inverse() * X.transpose() * Y;
     var c = B[0][0];
     var b = B[1][0];
@@ -118,16 +118,17 @@ extension StarStatsXY on Map<num, num> {
       xx.add(numb.toDouble());
     }
     var xcol1 = List<double>.filled(xx.length, 1.0);
-    var xcol3 = List<double>(xx.length);
+    // ignore: deprecated_member_use
+    var xcol3 = List<double?>(xx.length);
     for (var i = 0; i <xx.length; i++) {
-      xcol3[i] = pow(xx[i],2);
+      xcol3[i] = pow(xx[i],2) as double?;
     }
-    var xcol4 = List<double>(xx.length);
+    var xcol4 = List<double?>(xx.length);
     for (var i = 0; i <xx.length; i++) {
-      xcol4[i] = pow(xx[i],3);
+      xcol4[i] = pow(xx[i],3) as double?;
     }
     var Y = Matrix([yy]).transpose();
-    var X = Matrix([xcol1, xx, xcol3, xcol4]).transpose();
+    var X = Matrix([xcol1, xx, xcol3 as List<double>, xcol4 as List<double>]).transpose();
     var B = (X.transpose() * X).inverse() * X.transpose() * Y;
     var d = B[0][0];
     var c = B[1][0];
@@ -149,20 +150,20 @@ extension StarStatsXY on Map<num, num> {
       xx.add(numb.toDouble());
     }
     var xcol1 = List<double>.filled(xx.length, 1.0);
-    var xcol3 = List<double>(xx.length);
+    var xcol3 = List<double?>(xx.length);
     for (var i = 0; i <xx.length; i++) {
-      xcol3[i] = pow(xx[i],2);
+      xcol3[i] = pow(xx[i],2) as double?;
     }
-    var xcol4 = List<double>(xx.length);
+    var xcol4 = List<double?>(xx.length);
     for (var i = 0; i <xx.length; i++) {
-      xcol4[i] = pow(xx[i],3);
+      xcol4[i] = pow(xx[i],3) as double?;
     }
-    var xcol5 = List<double>(xx.length);
+    var xcol5 = List<double?>(xx.length);
     for (var i = 0; i <xx.length; i++) {
-      xcol5[i] = pow(xx[i],4);
+      xcol5[i] = pow(xx[i],4) as double?;
     }
     var Y = Matrix([yy]).transpose();
-    var X = Matrix([xcol1, xx, xcol3, xcol4, xcol5]).transpose();
+    var X = Matrix([xcol1, xx, xcol3 as List<double>, xcol4 as List<double>, xcol5 as List<double>]).transpose();
     var B = (X.transpose() * X).inverse() * X.transpose() * Y;
     var e = B[0][0];
     var d = B[1][0];

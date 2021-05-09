@@ -21,7 +21,7 @@ class _StarMathUtils {
   ///```decPlaces``` must be >= 0 and <= 13.
   double roundToDouble(double input, int decPlaces) {
     var parsedInp = 1.0;
-    int fac = pow(10, decPlaces);
+    int fac = pow(10, decPlaces) as int;
     parsedInp = parsedInp / fac;
     if ((input % 1).toString().length - 2 < decPlaces) {
       throw ArgumentError(
@@ -41,7 +41,7 @@ class _StarMathUtils {
   ///```decPlaces``` must be >= 0
   double ceilToDouble(double input, int decPlaces) {
     var parsedInp = 1.0;
-    int fac = pow(10, decPlaces);
+    int fac = pow(10, decPlaces) as int;
     parsedInp = parsedInp / fac;
     if ((input % 1).toString().length - 2 < decPlaces) {
       throw ArgumentError(
@@ -58,7 +58,7 @@ class _StarMathUtils {
   ///```decPlaces``` must be >= 0
   double floorToDouble(double input, int decPlaces) {
     var parsedInp = 1.0;
-    int fac = pow(10, decPlaces);
+    int fac = pow(10, decPlaces) as int;
     parsedInp = parsedInp / fac;
     if ((input % 1).toString().length - 2 < decPlaces) {
       throw ArgumentError(
@@ -185,7 +185,7 @@ class _StarMathUtils {
   double acosh(num x) => math.log(x + math.sqrt(x * x - 1));
 
   ///Computes hyperbolic arc-sine of a number.
-  double asinh(num x) => x.isInfinite && x.isNegative ? x : math.log(x + math.sqrt(x * x + 1));
+  double asinh(num x) => x.isInfinite && x.isNegative ? x as double : math.log(x + math.sqrt(x * x + 1));
 
   ///Computes hyperbolic arc-tangent of a number.
   double atanh(num x) => math.log((1 + x) / (1 - x)) / 2;
